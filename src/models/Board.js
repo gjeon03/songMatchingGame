@@ -8,6 +8,7 @@ const boardSchema = new mongoose.Schema({
   meta: {
     views: { type: Number, default: 0, required: true },
   },
+  username: { type: String, required: true, unique: true },
 });
 
 boardSchema.static("formatHashtags", function (hashtags) {

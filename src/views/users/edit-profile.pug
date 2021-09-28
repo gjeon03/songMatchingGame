@@ -1,0 +1,14 @@
+extends ../base
+
+block content
+	form(method="POST")
+		label Name
+		input(placeholder="Name", name="name", type="text", required, value=loggedInUser.name)
+		label Email
+		input(placeholder="Email", name="email", type="email", required, value=loggedInUser.email)
+		label ID
+		input(placeholder="ID", name="username", type="text", required, value=loggedInUser.username)
+		input(type="submit", value="Update Profile")
+		if !loggedInUser.socialOnly
+			hr
+			a(href="change-password") Change Password &rarr; 

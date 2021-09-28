@@ -6,10 +6,18 @@ block content
 		input(placeholder="Search by title",name="keyword", type="text")
 		input(type="submit", value="Search now")
 	dev 
-		a(href="board/upload") Writing &rarr;
+		a(href="board/upload") Write &rarr;
 	ul 
 		each item in items
 			+item(item)
 		else 
 			li Sorry nothing found.
-	ul 
+	ul
+		-var pageNumber = 0
+		-var check = keyword ? keyword + "&" : ""
+		while pageNumber < parseInt(len / 5) + 1
+			li 
+				a(href=`?${check}pageNumber=${pageNumber + 1}`) #{pageNumber++ + 1}
+			if pageNumber > 5
+				a(href="/") next 
+				-break
